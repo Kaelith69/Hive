@@ -118,29 +118,44 @@ def main():
             remove_columns=eval_dataset.column_names
         )
     
-    # Training arguments
-    training_args = TrainingArguments(
-        output_dir=output_dir,
-        num_train_epochs=config['training']['num_train_epochs'],
-        per_device_train_batch_size=config['training']['per_device_train_batch_size'],
-        gradient_accumulation_steps=config['training']['gradient_accumulation_steps'],
-        optim=config['training']['optim'],
-        learning_rate=config['training']['learning_rate'],
-        weight_decay=config['training']['weight_decay'],
-        fp16=config['training']['fp16'],
-        bf16=config['training']['bf16'],
-        max_grad_norm=config['training']['max_grad_norm'],
-        warmup_steps=config['training']['warmup_steps'],
-        logging_steps=config['training']['logging_steps'],
-        save_strategy=config['training']['save_strategy'],
-        save_steps=config['training']['save_steps'],
-        save_total_limit=config['training']['save_total_limit'],
-        evaluation_strategy=config['training']['evaluation_strategy'] if eval_dataset else "no",
-        eval_steps=config['training']['eval_steps'] if eval_dataset else None,
-        group_by_length=config['training']['group_by_length'],
-        report_to=config['training']['report_to'],
-        seed=config['training']['seed'],
-    )
+    # Training arguments (compatible with different transformers versions)
+    training_args_dict = {
+        'output_dir': output_dir,
+        'num_train_epochs': config['training']['num_train_epochs'],
+        'per_device_train_batch_size': config['training']['per_device_train_batch_size'],
+        'gradient_accumulation_steps': config['training']['gradient_accumulation_steps'],
+        'optim': config['training']['optim'],
+        'learning_rate': config['training']['learning_rate'],
+        'weight_decay': config['training']['weight_decay'],
+        'fp16': config['training']['fp16'],
+        'bf16': config['training']['bf16'],
+        'max_grad_norm': config['training']['max_grad_norm'],
+        'warmup_steps': config['training']['warmup_steps'],
+        'logging_steps': config['training']['logging_steps'],
+        'save_strategy': config['training']['save_strategy'],
+        'save_steps': config['training']['save_steps'],
+        'save_total_limit': config['training']['save_total_limit'],
+        'group_by_length': config['training']['group_by_length'],
+        'report_to': config['training']['report_to'],
+        'seed': config['training']['seed'],
+    }
+    
+    # Add evaluation args only if evaluating (skip if parameter not supported)
+    try:
+        if eval_dataset:
+            training_args_dict['evaluation_strategy'] = config['training']['evaluation_strategy']
+            training_args_dict['eval_steps'] = config['training']['eval_steps']
+        training_args = TrainingArguments(**training_args_dict)
+    except TypeError as e:
+        # Fallback: try without evaluation_strategy parameter (older transformers versions)
+        if 'evaluation_strategy' in str(e):
+            print("⚠️  Warning: evaluation_strategy not supported in this transformers version")
+            print("   Disabling validation for faster training...")
+            training_args_dict.pop('evaluation_strategy', None)
+            training_args_dict.pop('eval_steps', None)
+            training_args = TrainingArguments(**training_args_dict)
+        else:
+            raise
     
     # Initialize trainer
     print("🎯 Initializing trainer...")
