@@ -6,6 +6,7 @@
 # CELL 1: Clone Repository & Install Dependencies
 # ============================================================================
 
+!rm -rf Hive
 !git clone https://github.com/Kaelith69/Hive.git
 %cd Hive
 
@@ -34,7 +35,8 @@ print("\n📊 Validating dataset...")
 print("\n🚀 Starting training... This will take ~2-3 hours")
 print("=" * 70)
 
-!python train.py
+import subprocess
+subprocess.run(["python", "train.py"], check=True)
 
 print("\n" + "=" * 70)
 print("✅ Training completed!")

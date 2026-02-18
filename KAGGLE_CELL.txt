@@ -6,6 +6,7 @@
 # ============================================================================
 
 # Clone repo and setup
+!rm -rf Hive
 !git clone https://github.com/Kaelith69/Hive.git
 %cd Hive
 
@@ -26,7 +27,8 @@ print("Training starting now...")
 print("="*70 + "\n")
 
 # TRAIN
-!python train.py
+import subprocess
+subprocess.run(["python", "train.py"], check=True)
 
 print("\n" + "="*70)
 print("✅ TRAINING COMPLETE!")

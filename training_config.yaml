@@ -53,8 +53,8 @@ training:
   warmup_steps: 10  # More warmup for higher LR
   
   # Training efficiency
-  fp16: false
-  bf16: true  # Use bfloat16 for better numerical stability
+  fp16: true
+  bf16: false  # T4 does not support bf16; use fp16 for Kaggle compatibility
   max_grad_norm: 0.3
   
   # Logging and saving (reduced frequency for speed)

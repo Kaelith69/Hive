@@ -13,6 +13,7 @@ from trl import SFTTrainer
 from transformers import TrainingArguments, DataCollatorForSeq2Seq
 import argparse
 from pathlib import Path
+import inspect
 
 def load_config(config_path="training_config.yaml"):
     """Load training configuration from YAML file"""
@@ -61,6 +62,32 @@ def format_prompts(examples, tokenizer):
         )
         texts.append(text)
     return {"text": texts}
+
+
+def resolve_precision_settings(config):
+    configured_fp16 = bool(config['training'].get('fp16', False))
+    configured_bf16 = bool(config['training'].get('bf16', False))
+
+    if not torch.cuda.is_available():
+        return configured_fp16, False
+
+    major, _minor = torch.cuda.get_device_capability(0)
+    supports_bf16 = major >= 8
+
+    if configured_bf16 and not supports_bf16:
+        print("⚠️  BF16 requested but GPU does not support it. Switching to FP16.")
+        return True, False
+
+    return configured_fp16, configured_bf16
+
+
+def get_eval_arg_name():
+    params = inspect.signature(TrainingArguments.__init__).parameters
+    if 'evaluation_strategy' in params:
+        return 'evaluation_strategy'
+    if 'eval_strategy' in params:
+        return 'eval_strategy'
+    return None
 
 def main():
     parser = argparse.ArgumentParser(description="Train Hive Personality Model")
@@ -118,6 +145,8 @@ def main():
             remove_columns=eval_dataset.column_names
         )
     
+    fp16_value, bf16_value = resolve_precision_settings(config)
+
     # Training arguments (compatible with different transformers versions)
     training_args_dict = {
         'output_dir': output_dir,
@@ -127,8 +156,8 @@ def main():
         'optim': config['training']['optim'],
         'learning_rate': config['training']['learning_rate'],
         'weight_decay': config['training']['weight_decay'],
-        'fp16': config['training']['fp16'],
-        'bf16': config['training']['bf16'],
+        'fp16': fp16_value,
+        'bf16': bf16_value,
         'max_grad_norm': config['training']['max_grad_norm'],
         'warmup_steps': config['training']['warmup_steps'],
         'logging_steps': config['training']['logging_steps'],
@@ -140,22 +169,14 @@ def main():
         'seed': config['training']['seed'],
     }
     
-    # Add evaluation args only if evaluating (skip if parameter not supported)
-    try:
-        if eval_dataset:
-            training_args_dict['evaluation_strategy'] = config['training']['evaluation_strategy']
-            training_args_dict['eval_steps'] = config['training']['eval_steps']
-        training_args = TrainingArguments(**training_args_dict)
-    except TypeError as e:
-        # Fallback: try without evaluation_strategy parameter (older transformers versions)
-        if 'evaluation_strategy' in str(e):
-            print("⚠️  Warning: evaluation_strategy not supported in this transformers version")
-            print("   Disabling validation for faster training...")
-            training_args_dict.pop('evaluation_strategy', None)
-            training_args_dict.pop('eval_steps', None)
-            training_args = TrainingArguments(**training_args_dict)
-        else:
-            raise
+    eval_arg_name = get_eval_arg_name()
+    if eval_dataset and eval_arg_name:
+        training_args_dict[eval_arg_name] = config['training']['evaluation_strategy']
+        training_args_dict['eval_steps'] = config['training']['eval_steps']
+    elif eval_dataset and not eval_arg_name:
+        print("⚠️  This transformers build has no evaluation strategy argument; disabling validation.")
+
+    training_args = TrainingArguments(**training_args_dict)
     
     # Initialize trainer
     print("🎯 Initializing trainer...")
