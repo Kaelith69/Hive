@@ -1,4 +1,5 @@
 # Training Configuration for Hive Personality Model
+# OPTIMIZED FOR FAST TRAINING (2-3 hours on Kaggle T4 x2)
 # This file defines all hyperparameters and settings for fine-tuning
 
 model:
@@ -16,8 +17,8 @@ model:
 dataset:
   # Path to your personality dataset
   train_file: "dataset/final/personality.jsonl"
-  # Train/validation split ratio
-  validation_split: 0.05
+  # Train/validation split ratio (reduced for faster training)
+  validation_split: 0.02  # Only 2% for validation
   # Maximum samples to use (null = use all)
   max_samples: null
 
@@ -39,32 +40,32 @@ lora:
   task_type: "CAUSAL_LM"
 
 training:
-  # Training hyperparameters
+  # Training hyperparameters (optimized for speed)
   output_dir: "outputs"
-  num_train_epochs: 3
-  per_device_train_batch_size: 2
-  gradient_accumulation_steps: 4  # Effective batch size = 2 * 4 = 8
+  num_train_epochs: 2  # Reduced from 3 for faster training
+  per_device_train_batch_size: 4  # Increased for T4 x2 GPUs
+  gradient_accumulation_steps: 4  # Effective batch size = 4 * 4 = 16
   
   # Optimizer settings
   optim: "adamw_8bit"  # Memory-efficient optimizer
-  learning_rate: 2.0e-4
+  learning_rate: 3.0e-4  # Slightly higher for faster convergence
   weight_decay: 0.01
-  warmup_steps: 5
+  warmup_steps: 10  # More warmup for higher LR
   
   # Training efficiency
   fp16: false
   bf16: true  # Use bfloat16 for better numerical stability
   max_grad_norm: 0.3
   
-  # Logging and saving
-  logging_steps: 10
+  # Logging and saving (reduced frequency for speed)
+  logging_steps: 25  # Less frequent logging
   save_strategy: "steps"
-  save_steps: 100
-  save_total_limit: 2
+  save_steps: 500  # Save less frequently
+  save_total_limit: 1  # Keep only latest checkpoint
   
-  # Evaluation
+  # Evaluation (less frequent for speed)
   evaluation_strategy: "steps"
-  eval_steps: 100
+  eval_steps: 500  # Evaluate less often
   
   # Misc
   group_by_length: true  # Group sequences by length for efficiency
