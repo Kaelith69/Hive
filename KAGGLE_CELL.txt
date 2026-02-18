@@ -1,0 +1,44 @@
+# 🚀 KAGGLE NOTEBOOK - COPY THIS ENTIRE CELL
+
+# ============================================================================
+# COMPLETE SETUP + TRAINING (Copy-paste this single cell into Kaggle)
+# Settings: GPU T4 x2 (free), Internet: ON
+# ============================================================================
+
+# Clone repo and setup
+!git clone https://github.com/Kaelith69/Hive.git
+%cd Hive
+
+print("📦 Installing dependencies...")
+!pip install -q torch transformers datasets accelerate peft trl bitsandbytes pyyaml
+!pip install -q "unsloth[kaggle-new] @ git+https://github.com/unslothai/unsloth.git"
+
+print("✅ Dependencies installed!")
+print("\n" + "="*70)
+print("🚀 STARTING TRAINING (2-3 hours on Kaggle T4 x2)")
+print("="*70 + "\n")
+
+# Validate dataset
+!python validate_dataset.py --input dataset/final/personality.jsonl
+
+print("\n" + "="*70)
+print("Training starting now...")
+print("="*70 + "\n")
+
+# TRAIN
+!python train.py
+
+print("\n" + "="*70)
+print("✅ TRAINING COMPLETE!")
+print("="*70)
+
+# Export
+print("\n📦 Exporting to GGUF...")
+!python export_model.py --input outputs/final_model --type gguf --name hive-personality
+
+print("\n✅ Export complete!")
+print("\n" + "="*70)
+print("🎉 ALL DONE!")
+print("="*70)
+print("\nDownload your model from the Output tab on the right")
+print("File: exports/hive-personality.gguf/hive-personality-Q4_K_M.gguf (~3.8 GB)")
