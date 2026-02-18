@@ -216,14 +216,14 @@ python train.py
 
 | Platform | Cost | GPU | Training Time* | Reliability | Ease of Use |
 |----------|------|-----|---------------|-------------|-------------|
-| **Colab Free** | Free | T4 | 6-8 hours | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Colab Pro** | $10/mo | V100/A100 | 2-4 hours | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Kaggle** | Free | T4 x2 | 4-6 hours | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **RunPod** | $3-6 | RTX 4090 | 1-2 hours | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Vast.ai** | $1-3 | RTX 3090 | 2-4 hours | ⭐⭐⭐ | ⭐⭐⭐ |
-| **Lightning** | $5-10 | A10G | 3-5 hours | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Colab Free** | Free | T4 | 3-4 hours ⚡ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Colab Pro** | $10/mo | V100/A100 | 1-2 hours | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Kaggle** | Free | T4 x2 | 2-3 hours ⚡ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **RunPod** | $3-6 | RTX 4090 | 45-90 min | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Vast.ai** | $1-3 | RTX 3090 | 1.5-2.5 hours | ⭐⭐⭐ | ⭐⭐⭐ |
+| **Lightning** | $5-10 | A10G | 2-3 hours | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 
-*Approximate for 21k samples on 3B model
+*Optimized config for 21k samples on 3B model (2 epochs)
 
 ---
 
