@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Training outputs
+outputs/
+exports/
+*.ckpt
+*.safetensors
+*.bin
+*.pth
+
+# Logs
+*.log
+wandb/
+tensorboard/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files (too large for git)
+*.gguf
+*.ggml
+*.safetensors
+
+# Temporary files
+.cache/
+tmp/
+temp/
