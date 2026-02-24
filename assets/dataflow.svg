@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891B2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7C3AED" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="320" fill="#0f172a" rx="12" />
+
+  <!-- Title -->
+  <text x="400" y="28" font-size="13" font-weight="700" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8" letter-spacing="3">DATA FLOW</text>
+
+  <!-- Stage 1 -->
+  <rect x="20" y="50" width="155" height="80" rx="8" fill="url(#g1)" />
+  <text x="97" y="72" font-size="10" font-weight="700" text-anchor="middle" font-family="monospace" fill="#e9d5ff">STAGE 1 · INPUT</text>
+  <text x="97" y="91" font-size="10" text-anchor="middle" font-family="monospace" fill="#ffffff">WhatsApp .txt</text>
+  <text x="97" y="107" font-size="9" text-anchor="middle" font-family="monospace" fill="#c4b5fd">"3/14/24 - Sayanth:</text>
+  <text x="97" y="120" font-size="9" text-anchor="middle" font-family="monospace" fill="#c4b5fd">okay that's wild"</text>
+
+  <!-- Arrow -->
+  <path d="M176,90 L200,90" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)" />
+  <text x="188" y="82" font-size="8" text-anchor="middle" font-family="monospace" fill="#7C3AED">extract</text>
+
+  <!-- Stage 2 -->
+  <rect x="202" y="50" width="155" height="80" rx="8" fill="url(#g2)" />
+  <text x="279" y="72" font-size="10" font-weight="700" text-anchor="middle" font-family="monospace" fill="#bfdbfe">STAGE 2 · CLEAN</text>
+  <text x="279" y="91" font-size="10" text-anchor="middle" font-family="monospace" fill="#ffffff">Filtered Lines</text>
+  <text x="279" y="107" font-size="9" text-anchor="middle" font-family="monospace" fill="#93c5fd">"okay that's wild"</text>
+  <text x="279" y="120" font-size="9" text-anchor="middle" font-family="monospace" fill="#93c5fd">"lmao true tho"</text>
+
+  <!-- Arrow -->
+  <path d="M358,90 L382,90" stroke="#2563EB" stroke-width="2" marker-end="url(#arr)" />
+  <text x="370" y="82" font-size="8" text-anchor="middle" font-family="monospace" fill="#2563EB">convert</text>
+
+  <!-- Stage 3 -->
+  <rect x="384" y="50" width="155" height="80" rx="8" fill="url(#g3)" />
+  <text x="461" y="72" font-size="10" font-weight="700" text-anchor="middle" font-family="monospace" fill="#cffafe">STAGE 3 · JSONL</text>
+  <text x="461" y="91" font-size="10" text-anchor="middle" font-family="monospace" fill="#ffffff">Conv Pairs</text>
+  <text x="461" y="105" font-size="8" text-anchor="middle" font-family="monospace" fill="#a5f3fc">{"messages":[</text>
+  <text x="461" y="117" font-size="8" text-anchor="middle" font-family="monospace" fill="#a5f3fc"> {"role":"user",...},</text>
+  <text x="461" y="129" font-size="8" text-anchor="middle" font-family="monospace" fill="#a5f3fc"> {"role":"asst"...}]}</text>
+
+  <!-- Arrow -->
+  <path d="M540,90 L564,90" stroke="#06B6D4" stroke-width="2" marker-end="url(#arr)" />
+  <text x="552" y="82" font-size="8" text-anchor="middle" font-family="monospace" fill="#06B6D4">train</text>
+
+  <!-- Stage 4 -->
+  <rect x="566" y="50" width="155" height="80" rx="8" fill="url(#g4)" />
+  <text x="643" y="72" font-size="10" font-weight="700" text-anchor="middle" font-family="monospace" fill="#a7f3d0">STAGE 4 · MODEL</text>
+  <text x="643" y="91" font-size="10" text-anchor="middle" font-family="monospace" fill="#ffffff">LoRA Weights</text>
+  <text x="643" y="107" font-size="9" text-anchor="middle" font-family="monospace" fill="#6ee7b7">Llama-3.2-3B</text>
+  <text x="643" y="120" font-size="9" text-anchor="middle" font-family="monospace" fill="#6ee7b7">+ personality</text>
+
+  <!-- LoRA detail section -->
+  <rect x="20" y="158" width="760" height="140" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+  <text x="400" y="178" font-size="11" font-weight="700" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8" letter-spacing="2">LORA TRAINING DETAIL</text>
+
+  <!-- LoRA diagram -->
+  <!-- Base model box -->
+  <rect x="40" y="188" width="120" height="88" rx="6" fill="#0f172a" stroke="#7C3AED" stroke-width="1.5" />
+  <text x="100" y="207" font-size="9.5" font-weight="700" text-anchor="middle" font-family="monospace" fill="#7C3AED">BASE MODEL</text>
+  <text x="100" y="222" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">Llama-3.2-3B</text>
+  <text x="100" y="236" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">3B params</text>
+  <text x="100" y="250" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">frozen ✓</text>
+  <text x="100" y="265" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">4-bit quant</text>
+
+  <!-- Plus sign -->
+  <text x="178" y="237" font-size="22" font-weight="700" text-anchor="middle" font-family="sans-serif" fill="#475569">+</text>
+
+  <!-- LoRA adapter box -->
+  <rect x="198" y="188" width="120" height="88" rx="6" fill="#0f172a" stroke="#06B6D4" stroke-width="1.5" />
+  <text x="258" y="207" font-size="9.5" font-weight="700" text-anchor="middle" font-family="monospace" fill="#06B6D4">LORA ADAPTER</text>
+  <text x="258" y="222" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">rank r=16</text>
+  <text x="258" y="236" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">alpha=16</text>
+  <text x="258" y="250" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">trainable ✓</text>
+  <text x="258" y="265" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">~8M params</text>
+
+  <!-- Equals sign -->
+  <text x="336" y="237" font-size="22" font-weight="700" text-anchor="middle" font-family="sans-serif" fill="#475569">=</text>
+
+  <!-- Output box -->
+  <rect x="356" y="188" width="130" height="88" rx="6" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+  <text x="421" y="207" font-size="9.5" font-weight="700" text-anchor="middle" font-family="monospace" fill="#059669">YOU.exe</text>
+  <text x="421" y="222" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">personality</text>
+  <text x="421" y="236" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">captured</text>
+  <text x="421" y="250" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#94a3b8">responds like u</text>
+  <text x="421" y="265" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#6ee7b7">21,009 examples</text>
+
+  <!-- Export formats -->
+  <text x="560" y="195" font-size="9.5" font-weight="700" font-family="monospace" fill="#94a3b8">EXPORT OPTIONS:</text>
+  <rect x="555" y="202" width="100" height="20" rx="4" fill="#1e3a5f" />
+  <text x="605" y="216" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#93c5fd">merged_16bit</text>
+  <rect x="555" y="228" width="100" height="20" rx="4" fill="#1e3a5f" />
+  <text x="605" y="242" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#93c5fd">merged_4bit</text>
+  <rect x="665" y="202" width="100" height="20" rx="4" fill="#164e3a" />
+  <text x="715" y="216" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#6ee7b7">gguf (Ollama)</text>
+  <rect x="665" y="228" width="100" height="20" rx="4" fill="#164e3a" />
+  <text x="715" y="242" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#6ee7b7">lora adapters</text>
+  <text x="605" y="270" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#64748b">q4_k_m / q5_k_m / q8_0</text>
+  <text x="715" y="270" font-size="8.5" text-anchor="middle" font-family="monospace" fill="#64748b">llama.cpp ready</text>
+</svg>

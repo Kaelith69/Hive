@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="160" viewBox="0 0 760 160">
+  <defs>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="cardGrad5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="760" height="160" fill="#0f172a" rx="12" />
+
+  <!-- Title -->
+  <text x="380" y="26" font-size="12" font-weight="700" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8" letter-spacing="3">PERFORMANCE STATS</text>
+
+  <!-- Card 1: Dataset size -->
+  <rect x="16" y="42" width="134" height="100" rx="10" fill="url(#cardGrad1)" stroke="#7C3AED" stroke-width="1" />
+  <text x="83" y="78" font-size="30" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#ddd6fe">21K</text>
+  <text x="83" y="98" font-size="9.5" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8">conv. pairs</text>
+  <text x="83" y="115" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#64748b">personality.jsonl</text>
+  <text x="83" y="132" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#7C3AED">dataset entries</text>
+
+  <!-- Card 2: Model size -->
+  <rect x="162" y="42" width="134" height="100" rx="10" fill="url(#cardGrad2)" stroke="#2563EB" stroke-width="1" />
+  <text x="229" y="78" font-size="30" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#bfdbfe">3B</text>
+  <text x="229" y="98" font-size="9.5" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8">parameters</text>
+  <text x="229" y="115" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#64748b">Llama-3.2-3B</text>
+  <text x="229" y="132" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#2563EB">base model</text>
+
+  <!-- Card 3: Quantization -->
+  <rect x="308" y="42" width="134" height="100" rx="10" fill="url(#cardGrad3)" stroke="#06B6D4" stroke-width="1" />
+  <text x="375" y="78" font-size="28" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#cffafe">4-bit</text>
+  <text x="375" y="98" font-size="9.5" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8">quantization</text>
+  <text x="375" y="115" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#64748b">QLoRA / bitsandbytes</text>
+  <text x="375" y="132" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#06B6D4">8GB VRAM min</text>
+
+  <!-- Card 4: Training time -->
+  <rect x="454" y="42" width="134" height="100" rx="10" fill="url(#cardGrad4)" stroke="#059669" stroke-width="1" />
+  <text x="521" y="76" font-size="26" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#a7f3d0">2-3h</text>
+  <text x="521" y="96" font-size="9.5" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8">training time</text>
+  <text x="521" y="112" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#64748b">Kaggle T4 × 2</text>
+  <text x="521" y="128" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#059669">free tier ✓</text>
+
+  <!-- Card 5: LoRA rank -->
+  <rect x="600" y="42" width="144" height="100" rx="10" fill="url(#cardGrad5)" stroke="#F59E0B" stroke-width="1" />
+  <text x="672" y="78" font-size="30" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#fde68a">r=16</text>
+  <text x="672" y="98" font-size="9.5" text-anchor="middle"
+        font-family="'Segoe UI', sans-serif" fill="#94a3b8">LoRA rank</text>
+  <text x="672" y="115" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#64748b">alpha=16, dropout=0.05</text>
+  <text x="672" y="132" font-size="9" text-anchor="middle"
+        font-family="monospace" fill="#F59E0B">~8M trainable params</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a5f3fc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#bg)" rx="12" />
+
+  <!-- Hexagon grid decoration -->
+  <g opacity="0.12" fill="none" stroke="#ffffff" stroke-width="1.2">
+    <polygon points="40,20 60,8 80,20 80,44 60,56 40,44" />
+    <polygon points="80,20 100,8 120,20 120,44 100,56 80,44" />
+    <polygon points="120,20 140,8 160,20 160,44 140,56 120,44" />
+    <polygon points="60,56 80,44 100,56 100,80 80,92 60,80" />
+    <polygon points="100,56 120,44 140,56 140,80 120,92 100,80" />
+    <polygon points="40,92 60,80 80,92 80,116 60,128 40,116" />
+    <polygon points="80,92 100,80 120,92 120,116 100,128 80,116" />
+    <polygon points="120,92 140,80 160,92 160,116 140,128 120,116" />
+    <polygon points="680,20 700,8 720,20 720,44 700,56 680,44" />
+    <polygon points="720,20 740,8 760,20 760,44 740,56 720,44" />
+    <polygon points="700,56 720,44 740,56 740,80 720,92 700,80" />
+    <polygon points="680,92 700,80 720,92 720,116 700,128 680,116" />
+    <polygon points="720,92 740,80 760,92 760,116 740,128 720,116" />
+    <polygon points="690,128 710,116 730,128 730,152 710,164 690,152" />
+  </g>
+
+  <!-- Glowing dots -->
+  <circle cx="200" cy="40" r="2" fill="#a5f3fc" opacity="0.6" />
+  <circle cx="350" cy="170" r="1.5" fill="#ffffff" opacity="0.5" />
+  <circle cx="600" cy="30" r="2" fill="#a5f3fc" opacity="0.7" />
+  <circle cx="650" cy="150" r="1.5" fill="#ffffff" opacity="0.4" />
+
+  <!-- Bee icon (simple hex shape) -->
+  <text x="60" y="115" font-size="52" text-anchor="middle" font-family="serif">🐝</text>
+
+  <!-- Main title -->
+  <text x="400" y="90" font-size="68" font-weight="900" text-anchor="middle"
+        font-family="'Segoe UI', Arial, sans-serif" fill="url(#textGrad)" letter-spacing="8">HIVE</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="128" font-size="16" text-anchor="middle"
+        font-family="'Segoe UI', Arial, sans-serif" fill="#e0f2fe" letter-spacing="2" opacity="0.9">
+    clone yourself, one token at a time
+  </text>
+
+  <!-- Tag line -->
+  <text x="400" y="162" font-size="12" text-anchor="middle"
+        font-family="'Segoe UI', Arial, sans-serif" fill="#bfdbfe" opacity="0.75" letter-spacing="1">
+    WhatsApp → Dataset → Fine-tune → You, but faster
+  </text>
+</svg>
