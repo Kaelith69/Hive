@@ -31,22 +31,6 @@ You feed it your chats. It feeds a 3B-parameter model 21,000+ examples of how yo
 
 ---
 
-## 🎬 In Action
-
-> **Place demo GIF here: `assets/demo.gif`**
-
-![Demo](assets/demo.gif)
-
-*The GIF should show:*
-- *Running `python extract.py` and watching it filter your messages in real-time*
-- *`python convert.py` outputting the JSONL pairs*
-- *`python train.py` showing the training loss curve and tqdm progress*
-- *A quick terminal session with the exported model replying in your style*
-
-*(Until you record it, imagine a terminal going brrrr while loss curves drop. Very satisfying. Very nerdy. Very you.)*
-
----
-
 ## 🧠 System Overview
 
 At its core, Hive is a **four-stage data-to-model pipeline**:
